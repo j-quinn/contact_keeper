@@ -1,11 +1,14 @@
 const mongoose = require('mongoose');
-const result = require('dotenv').config();
 
-if (result.error) {
-  throw result.error;
+if (process.env.NODE_ENV !== 'production') {
+  const result = require('dotenv').config();
+
+  if (result.error) {
+    throw result.error;
+  }
+
+  //  console.log(result.parsed);
 }
-
-console.log(result.parsed);
 
 const connectDB = async () => {
   try {
